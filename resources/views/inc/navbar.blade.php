@@ -25,7 +25,7 @@
   </nav> --}}
 
   {{-- php artisan make:controller ProductsController --resource  --}}
-  <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+  <nav class="navbar navbar-expand-md navbar-light navbar-laravel ">
       <div class="container">
           <a class="navbar-brand" href="{{ url('/') }}"><i class="fas fa-parachute-box" style="color:black"></i> {{ config('app.name', 'Laravel') }}
           </a>
