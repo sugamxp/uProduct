@@ -4,17 +4,24 @@
 <div class="container">
         <h1>Products</h1>
         @if (count($products)>0)
-           @foreach ($products as $prod)
                <div class="well">
                 <div class="row">
                     <div class="col-md-4 col-sm-4">
-                            <h3><a href="/posts/{{$prod->id}}">{{$prod->title}}</a></h3>
-                            <small>Written on {{$prod->created_at}}</small>
-                            <hr>
+                            <div class="card" style="width: 18rem;">
+                                    <div class="card-header">
+                                      Today
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        @foreach ($products as $prod)
+                                        <li class="list-group-item"><h5><a href="/posts/{{$prod->id}}">{{$prod->title}}</a></h5>
+                                        <small>Written on {{$prod->created_at}}</small>
+                                        @endforeach
+                                    </li>
+                                    </ul>
+                                  </div>
                     </div>
                 </div>
                </div>
-           @endforeach
         @else
         @endif
 </div>
