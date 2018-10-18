@@ -44,24 +44,27 @@ class ProductsController extends Controller
             'title' => 'required',
             'desc' => 'required',
             'summ' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
+
         ]);
 
-        //Handle File Upload
-        // if($request->hasFile('cover_image')){
-        //     $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+        // Handle File Upload
+        if($request->hasFile('cover_image')){
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
         
-        //     $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-        //     $extension = $request->file('cover_image')->getClientOriginalExtension();
-        //     $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        //     $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
 
-        // }else{
-        //     $fileNameToStore = 'noimage.jpg';
-        // }
+        }else{
+            $fileNameToStore = 'noimage.jpg';
+        }
             $product = new Product;
             $product->title = $request->input('title');
             $product->description = $request->input('desc');
             $product->summary = $request->input('summ');
+            $product->cover_image = $fileNameToStore;
             $product->save();
 
             return redirect('/products');
@@ -76,6 +79,8 @@ class ProductsController extends Controller
     public function show($id)
     {
         //
+        $prod = Product::find($id);
+        return view('products.show')->with('prod',$prod);
     }
 
     /**
