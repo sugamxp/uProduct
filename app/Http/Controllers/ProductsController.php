@@ -45,18 +45,14 @@ class ProductsController extends Controller
             'desc' => 'required',
             'summ' => 'required',
             'cover_image' => 'image|nullable|max:1999'
-
         ]);
-
         // Handle File Upload
         if($request->hasFile('cover_image')){
             $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
-        
             $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-
         }else{
             $fileNameToStore = 'noimage.jpg';
         }
@@ -115,5 +111,15 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function vote(Request $req)
+    {
+        # code...
+        $prod = Product::find($req->id);
+        $prod->votes =  $prod->votes+1;
+        $prod->save();
+        // return redirect('/products');
+        return response()->json($prod);
     }
 }

@@ -18,3 +18,5 @@ Auth::routes();
 Route::resource('dashboard','UserController');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/products/vote', 'ProductsController@vote');
