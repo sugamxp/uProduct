@@ -2,28 +2,35 @@
 
 @section('content')
 <div class="container">
-        <h1>Products</h1>
         @if (count($products)>0)
-               <div class="well">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                            <div class="card" style="width: 18rem;">
-                                    <div class="card-header">
-                                      Today
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        @foreach ($products as $prod)
-                                        <li class="list-group-item"><h5><a href="/posts/{{$prod->id}}">{{$prod->title}}</a></h5>
-                                        <small>Written on {{$prod->created_at}}</small>
-                                        @endforeach
-                                    </li>
-                                    </ul>
-                                  </div>
+                    <div class="col-md-8">
+                            <div class="alert alert-success">Today's</div>
+
+<table class="table table-hover">
+        <tbody>
+            @foreach ($products as $prod)
+          <tr>
+            <td><div class="row">
+                    <div class="col-md-2">
+                    <img src="/storage/cover_images/{{$prod->cover_image}}" alt="" width="100%" height="80px">
                     </div>
-                </div>
+                    <div class="col-md-10" >
+                            <h5><a href="/products/{{$prod->id}}">{{$prod->title}}</a></h5>
+                                <small class="font-italic">{{$prod->summary}}</small>
+                                <button type="button" class="btn btn-outline-danger btn-sm float-right"><i class="fas fa-caret-up"></i> Upvote</button>
+                           
+                        </div>
+            </div></td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+                    </div>
                </div>
         @else
         @endif
 </div>
   
 @endsection
+
