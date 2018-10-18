@@ -20,14 +20,20 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
        @include('inc.navbar')
-
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    {{-- @yield('page-js-files') --}}
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>  
+    @yield('page-js-script')
 </body>
 </html>
