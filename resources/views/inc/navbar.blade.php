@@ -15,7 +15,6 @@
                   <li><a class="p-2 text-dark" href="/about">About</a></li>
                   <li><a class="p-2 text-dark" href="/services">Services</a></li>
                   <li><a class="p-2 text-dark" href="/posts">Posts</a></li>
-                  <li><a href="/dashboard" class="p-2 text-dark">Dashboard</a></li>
               </ul>
 
               <!-- Right Side Of Navbar -->
@@ -31,6 +30,7 @@
                           @endif
                       </li>
                   @else
+                      <li style="padding:9px "><a class="p-2 text-dark" href="/dashboard">Dashboard</a></li>
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                               {{ Auth::user()->name }} <span class="caret"></span>

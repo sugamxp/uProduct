@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('description')->default('');
             $table->string('summary');
-            $table->integer('upid')->default(0);
+            $table->integer('upid')->references('id')->on('users');
             $table->integer('dpid')->default(0);
             $table->integer('votes')->default(0);
             $table->timestamps();
