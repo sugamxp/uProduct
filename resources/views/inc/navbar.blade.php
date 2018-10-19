@@ -1,5 +1,4 @@
-
-  <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
       <div class="container">
           <a class="navbar-brand" href="{{ url('/') }}">
             <i class="fas fa-parachute-box" style="color:black"></i> {{ config('app.name', 'Laravel') }}
@@ -11,11 +10,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <!-- Left Side Of Navbar -->
               <ul class="navbar-nav mr-auto">
-                  <li><a class="p-2 text-dark" href="/">Index</a></li>
+                  <!-- <li><a class="p-2 text-dark" href="/">Index</a></li>
                   <li><a class="p-2 text-dark" href="/about">About</a></li>
                   <li><a class="p-2 text-dark" href="/services">Services</a></li>
-                  <li><a class="p-2 text-dark" href="/posts">Posts</a></li>
-                  <li><a href="/dashboard" class="p-2 text-dark">Dashboard</a></li>
+                  <li><a class="p-2 text-dark" href="/posts">Posts</a></li> -->
               </ul>
 
               <!-- Right Side Of Navbar -->
@@ -31,6 +29,7 @@
                           @endif
                       </li>
                   @else
+                      <li style="padding:9px "><a class="p-2 text-dark" href="/dashboard">Dashboard</a></li>
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                               {{ Auth::user()->name }} <span class="caret"></span>
