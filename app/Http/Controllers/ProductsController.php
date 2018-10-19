@@ -124,6 +124,7 @@ class ProductsController extends Controller
         //
     }
 
+<<<<<<< Updated upstream
     public function vote(Request $req)
     {
         # code...
@@ -139,5 +140,9 @@ class ProductsController extends Controller
         
         // return redirect('/products');
         return response()->json($prod);
+=======
+    public function displayProd(){
+        return view('products.displayprod');
+>>>>>>> Stashed changes
     }
 }
