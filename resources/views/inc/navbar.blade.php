@@ -10,10 +10,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <!-- Left Side Of Navbar -->
               <ul class="navbar-nav mr-auto">
-                  <li><a class="p-2 text-dark" href="/">Index</a></li>
+                  <!-- <li><a class="p-2 text-dark" href="/">Index</a></li>
                   <li><a class="p-2 text-dark" href="/about">About</a></li>
                   <li><a class="p-2 text-dark" href="/services">Services</a></li>
-                  <li><a class="p-2 text-dark" href="/posts">Posts</a></li>
+                  <li><a class="p-2 text-dark" href="/posts">Posts</a></li> -->
               </ul>
 
               <!-- Right Side Of Navbar -->

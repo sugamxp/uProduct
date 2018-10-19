@@ -5,7 +5,6 @@
     @if (count($products)>0)
     <div class="row">
         <div class="col-md-8">
-            <div class="alert alert-success">Today's</div>
             <table class="table table-hover">
                 <tbody>
                     @foreach ($products as $prod)
@@ -18,13 +17,8 @@
                                 <div class="col-md-10">
                                     <h5><a href="/products/{{$prod->id}}">{{$prod->title}}</a></h5>
                                     <small class="font-italic">{{$prod->summary}}</small>
-                                    @if(!Auth::user()->votes()->where('prod_id',$prod->id)->first())
-                                    <button type="button" class="btn btn-outline-danger btn-sm float-right votebtn"
-                                        data-id="{{$prod->id}}"><i class="fas fa-caret-up"></i> {{$prod->votes}}</button>
-                                    @else
                                     <button type="button" class="btn btn-danger btn-sm float-right"
-                                    data-id="{{$prod->id}}" disabled><i class="fas fa-caret-up"></i> {{$prod->votes}}</button>
-                                    @endif
+                                        data-id="{{$prod->id}}" disabled>Upvotes: {{$prod->votes}}</button>
                                 </div>
                             </div>
                         </td>
@@ -33,6 +27,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="col-md-4">
+            
+        </div>
     </div>
     @else
     @endif
@@ -40,7 +37,7 @@
 @endsection
 @section('page-js-script')
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function () {
         console.log('ready');
         $(document).on('click', '.votebtn', function (event) {
@@ -61,12 +58,10 @@
                     'id': btnid
                 },
                 success: function (data) {
-                    // $(".votebtn[data-id='" + data.id + "']").attr("disabled", true);
-                    $(".votebtn[data-id='" + data.id + "']").removeClass("btn-outline-danger").addClass("btn-danger");
-                    $(".votebtn[data-id='" + data.id + "']").html(data.votes).attr("disabled", true);
+                    $(".votebtn[data-id='" + data.id + "']").html(data.votes);
                 }
             });
         });
     });
-</script>
+</script> -->
 @endsection

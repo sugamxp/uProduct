@@ -4,19 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Vote extends Model
 {
     //
-    protected $table = 'products';
+    protected $table = 'userVotes';
     public $primaryKey = 'id';
-
+    public $timestamps = false;
+    
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-
-    public function votes()
+    public function product()
     {
-        return $this->hasMany('App\Vote');
+        return $this->belongsTo('App\Product');
     }
+
 }
