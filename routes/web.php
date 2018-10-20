@@ -17,12 +17,11 @@ Route::resource('products', 'ProductsController');
 Auth::routes();
 // Route::resource('dashboard','UserController');
 
-<<<<<<< Updated upstream
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 
 Route::post('/products/vote', 'ProductsController@vote');
-=======
+Route::post('/products/comment', 'ProductsController@comment');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/displayprod', 'ProductsController@displayProd');
->>>>>>> Stashed changes

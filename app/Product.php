@@ -19,4 +19,9 @@ class Product extends Model
     {
         return $this->hasMany('App\Vote');
     }
+    public function comments()
+    {
+        return $this->hasMany('App\Comment','prod_id','id');
+    }
+
 }

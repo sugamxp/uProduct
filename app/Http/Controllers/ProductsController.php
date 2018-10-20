@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use DB;
 use App\Vote; 
+use App\User; 
+use App\Comment;
 use Auth;
 class ProductsController extends Controller
 {
@@ -86,8 +88,14 @@ class ProductsController extends Controller
     public function show($id)
     {
         //
+
         $prod = Product::find($id);
-        return view('products.show')->with('prod',$prod);
+        $owner = User::find($prod->upid);  
+        $comments = $prod->comments()->get();
+        // return $comment;
+        return view('products.show')->with('prod',$prod)
+                                    ->with('owner', $owner)
+                                    ->with('comments',$comments);
     }
 
     /**
@@ -124,7 +132,6 @@ class ProductsController extends Controller
         //
     }
 
-<<<<<<< Updated upstream
     public function vote(Request $req)
     {
         # code...
@@ -140,9 +147,24 @@ class ProductsController extends Controller
         
         // return redirect('/products');
         return response()->json($prod);
-=======
-    public function displayProd(){
-        return view('products.displayprod');
->>>>>>> Stashed changes
     }
+
+    // public function displayProd(){
+    //     return view('products.displayprod');
+    // }
+
+    public function comment(Request $req){
+        //
+        $prodid = $req->input('prodid');
+        $comment = new Comment;
+        $comment->pros = $req->input('pros');
+        $comment->cons = $req->input('cons');
+        $comment->description = $req->input('descr');
+        $comment->user_id = Auth::user()->id;
+        $comment->prod_id = $req->input('prodid');
+        $comment->save();
+
+        return redirect("/products/$prodid");
+    }
+
 }

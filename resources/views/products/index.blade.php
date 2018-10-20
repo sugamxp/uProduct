@@ -7,31 +7,30 @@
         <div class="col-md-8">
             <div class="alert alert-success">Today's</div>
             <table class="table table-hover">
-                <tbody>
-                    @foreach ($products as $prod)
-                    <tr>
-                        <td>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="/storage/cover_images/{{$prod->cover_image}}" alt="" width="100%" height="80px">
-                                </div>
-                                <div class="col-md-10">
-                                    <h5><a href="/products/{{$prod->id}}">{{$prod->title}}</a></h5>
-                                    <small class="font-italic">{{$prod->summary}}</small>
-                                    @if(!Auth::user()->votes()->where('prod_id',$prod->id)->first())
-                                    <button type="button" class="btn btn-outline-danger btn-sm float-right votebtn"
-                                        data-id="{{$prod->id}}"><i class="fas fa-caret-up"></i> {{$prod->votes}}</button>
-                                    @else
-                                    <button type="button" class="btn btn-danger btn-sm float-right"
-                                    data-id="{{$prod->id}}" disabled><i class="fas fa-caret-up"></i> {{$prod->votes}}</button>
-                                    @endif
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    <div class="card" style="width: 100%;">                           
+                            <ul class="list-group list-group-flush">
+                                    @foreach ($products as $prod)
+                              <li class="list-group-item"> <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="/storage/cover_images/{{$prod->cover_image}}" alt="" width="100%" height="80px">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5><a href="/products/{{$prod->id}}">{{$prod->title}}</a></h5>
+                                        <small class="font-italic">{{$prod->summary}}</small>
+                                        @if(!Auth::user()->votes()->where('prod_id',$prod->id)->first())
+                                        <button type="button" class="btn btn-outline-danger btn-sm float-right votebtn"
+                                            data-id="{{$prod->id}}"><i class="fas fa-caret-up"></i> {{$prod->votes}}</button>
+                                        @else
+                                        <button type="button" class="btn btn-danger btn-sm float-right"
+                                        data-id="{{$prod->id}}" disabled><i class="fas fa-caret-up"></i> {{$prod->votes}}</button>
+                                        @endif
+                                    </div>
+                                </div></li>
+                              @endforeach
+
+                            </ul>
+                          </div>
+            
         </div>
     </div>
     @else

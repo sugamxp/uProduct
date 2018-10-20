@@ -18,6 +18,9 @@
 
               <!-- Right Side Of Navbar -->
               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item" style="padding:9px , ">
+                      <a href="/products/create"><i class="fas fa-plus-circle fa-2x"></i></a>              
+                  </li>
                   <!-- Authentication Links -->
                   @guest
                       <li class="nav-item">
