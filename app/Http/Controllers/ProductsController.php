@@ -25,9 +25,11 @@ class ProductsController extends Controller
     {
 
             // $uservote = Vote::select('prod_id')->where('user_id', Auth::user()->id)->get();
-            $products = Product::orderBy('created_at', 'desc')->get();
-            return view('products.index')->with('products', $products)
-                                         ;
+            $products_latest = Product::orderBy('created_at', 'desc')->get();
+            $products_votes = Product::orderBy('votes', 'desc')->get();
+            return view('products.index')->with('products', $products_latest)
+                                        ->with('prod_votes', $products_votes);
+                                         
        
     }
 

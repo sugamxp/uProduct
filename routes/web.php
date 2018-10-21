@@ -24,4 +24,5 @@ Route::post('/products/comment', 'ProductsController@comment');
 Route::get('/news', 'ApiController@newsapi');
 Route::post('/news/source_id', 'ApiController@newsapi');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/displayprod', 'ProductsController@displayProd');
+Route::post('/fetch', 'AutocompleteController@fetch')->name('fetch');
+
