@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container">
           <a class="navbar-brand" href="{{ url('/') }}">
-            <i class="fas fa-parachute-box" style="color:black"></i> {{ config('app.name', 'Laravel') }}
+            <i class="fas fa-parachute-box" style="color:white"></i> {{ config('app.name', 'Laravel') }}
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
               <span class="navbar-toggler-icon"></span>
@@ -10,17 +10,15 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <!-- Left Side Of Navbar -->
               <ul class="navbar-nav mr-auto">
-                  <!-- <li><a class="p-2 text-dark" href="/">Index</a></li>
-                  <li><a class="p-2 text-dark" href="/about">About</a></li>
-                  <li><a class="p-2 text-dark" href="/services">Services</a></li>
-                  <li><a class="p-2 text-dark" href="/posts">Posts</a></li> -->
+                    <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
               </ul>
 
               <!-- Right Side Of Navbar -->
               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item" style="padding:9px , ">
-                      <a href="/products/create"><i class="fas fa-plus-circle fa-2x"></i></a>              
-                  </li>
+                 
                   <!-- Authentication Links -->
                   @guest
                       <li class="nav-item">
@@ -32,7 +30,10 @@
                           @endif
                       </li>
                   @else
-                      <li style="padding:9px "><a class="p-2 text-dark" href="/dashboard">Dashboard</a></li>
+                  <li style="padding:9px; color: black">
+                        <a href="/products/create"><i class="fas fa-plus-circle fa-2x"></i></a>              
+                    </li>
+                      <li style="padding:9px ; "><a class="p-2 text-dark" href="/dashboard" style="color:white !important">Dashboard</a></li>
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                               {{ Auth::user()->name }} <span class="caret"></span>

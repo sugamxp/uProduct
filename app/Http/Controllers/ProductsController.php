@@ -13,7 +13,7 @@ class ProductsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except' => ['index', 'show']]);
     }
 
     /**
@@ -23,11 +23,12 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
-        $uservote = Vote::select('prod_id')->where('user_id', Auth::user()->id)->get();
-        $products = Product::orderBy('created_at', 'desc')->get();
-        return view('products.index')->with('products', $products)
-                                     ->with('uservote',Auth::user()->votes);
+
+            // $uservote = Vote::select('prod_id')->where('user_id', Auth::user()->id)->get();
+            $products = Product::orderBy('created_at', 'desc')->get();
+            return view('products.index')->with('products', $products)
+                                         ;
+       
     }
 
     /**
@@ -56,7 +57,8 @@ class ProductsController extends Controller
             'title' => 'required',
             'desc' => 'required',
             'summ' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'domain' =>'required',
+            'cover_image' => 'image|nullable|max:5000'
         ]);
         // Handle File Upload
         if($request->hasFile('cover_image')){
@@ -68,12 +70,35 @@ class ProductsController extends Controller
         }else{
             $fileNameToStore = 'noimage.jpg';
         }
+
+        if($request->hasFile('caro1')){
+            $fileNameWithExt = $request->file('caro1')->getClientOriginalName();
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('caro1')->getClientOriginalExtension();
+            $fileCaro1 = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('caro1')->storeAs('public/caro1/', $fileCaro1);
+        }else{
+            $fileCaro1 = 'noimage.jpg';
+        }
+        if($request->hasFile('caro2')){
+            $fileNameWithExt = $request->file('caro2')->getClientOriginalName();
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('caro2')->getClientOriginalExtension();
+            $fileCaro2 = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('caro2')->storeAs('public/caro2/', $fileCaro2);
+        }else{
+            $fileCaro2 = 'noimage.jpg';
+        }
+
             $product = new Product;
             $product->title = $request->input('title');
             $product->description = $request->input('desc');
             $product->summary = $request->input('summ');
             $product->cover_image = $fileNameToStore;
+            $product->caro1 = $fileCaro1;
+            $product->caro2 = $fileCaro2;
             $product->upid = auth()->user()->id;
+            $product->dpid = $request->input('domain');
             $product->save();
 
             return redirect('/products');
@@ -162,6 +187,7 @@ class ProductsController extends Controller
         $comment->description = $req->input('descr');
         $comment->user_id = Auth::user()->id;
         $comment->prod_id = $req->input('prodid');
+        // $comment->dpid = =
         $comment->save();
 
         return redirect("/products/$prodid");

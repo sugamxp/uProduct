@@ -25,13 +25,21 @@
                 {{Form::text('website','', ['class' => 'form-control', 'placeholder' => 'Website Link'])}}
             </div>
             <div class="form-group">
-                {{Form::label('drop', 'Domain')}}
-                {{Form::select('size', ['L' => 'Large', 'S' => 'Small'],null,['class' => 'form-control'])}}
+                {{Form::label('drop', 'Select a Domain')}}
+                {{Form::select('domain', [1 => 'Productivity', 2 => 'Artificial Intelligence', 3 => 'Developer Tools', 4=> 'User Experience', 5 => 'IoT', 6 => 'APIs', 7=>'Tech', 8=>'Open Source'],null,['class' => 'form-control'])}}
             </div>
             <div class="form-group">
                 {{Form::label('img', 'Choose display image')}}
                 {{Form::file('cover_image')}}
             </div>
+            <div class="form-group">
+                    {{Form::label('caro1', 'Choose slideshow image1')}}
+                    {{Form::file('caro1')}}
+                </div>
+                <div class="form-group">
+                        {{Form::label('caro2', 'Choose slideshow image2')}}
+                        {{Form::file('caro2')}}
+                    </div>
             <div class="form-group">
                 {{Form::submit('Submit', ['class' => 'btn btn-success'])}}
             </div>

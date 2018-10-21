@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description')->default('');
+            $table->string('description',2000);
             $table->string('summary');
             $table->integer('upid')->default(0);
             $table->integer('dpid')->default(0);

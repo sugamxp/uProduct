@@ -25,7 +25,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
-
+    <style>
+    body { 
+    /* background: url(/IMG.jpg) no-repeat center center fixed;  */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    }
+    </style>
 <body>
     <div id="app">
         @include('inc.navbar')
